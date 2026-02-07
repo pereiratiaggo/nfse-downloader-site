@@ -1,4 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // ===== Contador de Acesso =====
+    const visitorCountElement = document.getElementById('visitorCount');
+    let visitorCount = localStorage.getItem('visitorCount');
+    
+    if (visitorCount === null) {
+        visitorCount = 1;
+    } else {
+        visitorCount = parseInt(visitorCount) + 1;
+    }
+    
+    localStorage.setItem('visitorCount', visitorCount);
+    visitorCountElement.textContent = visitorCount.toLocaleString('pt-BR');
+    
+    // ===== Download e Modal =====
     const downloadBtn = document.getElementById('downloadBtn');
     const previewImg = document.getElementById('previewImg');
     const imageModal = document.getElementById('imageModal');
