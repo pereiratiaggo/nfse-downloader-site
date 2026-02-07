@@ -1,27 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // ===== Contador de Acesso Global =====
-    const visitorCountElement = document.getElementById('visitorCount');
-    const counterNamespace = 'nfse-downloader-site-visits';
-    
-    // Usar CountAPI.xyz para contagem global
-    fetch(`https://api.countapi.xyz/hit/${counterNamespace}`)
-        .then(response => response.json())
-        .then(data => {
-            visitorCountElement.textContent = data.value.toLocaleString('pt-BR');
-        })
-        .catch(error => {
-            console.log('Erro ao contar visitas:', error);
-            // Fallback para localStorage se a API falhar
-            let visitorCount = localStorage.getItem('visitorCount');
-            if (visitorCount === null) {
-                visitorCount = 1;
-            } else {
-                visitorCount = parseInt(visitorCount) + 1;
-            }
-            localStorage.setItem('visitorCount', visitorCount);
-            visitorCountElement.textContent = visitorCount.toLocaleString('pt-BR');
-        });
-    
     // ===== Download e Modal =====
     const downloadBtn = document.getElementById('downloadBtn');
     const previewImg = document.getElementById('previewImg');
