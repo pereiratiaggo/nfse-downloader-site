@@ -1,0 +1,35 @@
+# Pastas e arquivos do sistema
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Sistema Operacional
+Thumbs.db
+desktop.ini
+
+# Build e dist
+dist/
+build/
+*.egg-info/
+
+# Arquivos temporários
+*.tmp
+*.temp
+.cache/
+
+# Node (se usar)
+node_modules/
+package-lock.json
+yarn.lock
