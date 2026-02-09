@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const imageModal = document.getElementById('imageModal');
     const closeModal = document.getElementById('closeModal');
 
-    downloadBtn.href = 'https://drive.google.com/file/d/1lPDMNoJJ1NJqAPj2z3jQLXKUvw5nUfgP/view?usp=sharing';
+    // exe downloadBtn.href = 'https://drive.google.com/file/d/1lPDMNoJJ1NJqAPj2z3jQLXKUvw5nUfgP/view?usp=sharing';
+    downloadBtn.href = 'https://drive.google.com/file/d/1bD-lpoIc9d-nxrHtwcyvl7ZNn1KmrUZF/view?usp=sharing';
     downloadBtn.target = '_blank';
 
     // Abrir modal ao clicar na imagem
