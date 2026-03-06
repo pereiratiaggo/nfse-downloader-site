@@ -1,6 +1,6 @@
 # Baixa NFS-e - Landing Page
 
-Uma página web simples e responsiva para disponibilizar o download do app Baixa NFS-e no GitHub Pages.
+Uma página web simples, responsiva e otimizada para SEO para disponibilizar o download do app Baixa NFS-e no GitHub Pages.
 
 ## Características
 
@@ -8,15 +8,17 @@ Uma página web simples e responsiva para disponibilizar o download do app Baixa
 - 📱 Totalmente compatível com dispositivos móveis
 - ⚡ Carregamento rápido (arquivos estáticos)
 - 🎨 Tema azul profissional
-- 🔧 Fácil de customizar
+- 🔍 Otimizado para motores de busca (SEO)
+- ♿ Acessível com marcação semântica adequada
+-  Fácil de customizar
 
 ## Estrutura dos Arquivos
 
 ```
 .
-├── index.html      # Página principal
-├── style.css       # Estilos CSS
-├── script.js       # Funcionalidades JavaScript
+├── index.html      # Página principal com marcação semântica e SEO
+├── style.css       # Estilos CSS responsivos e otimizados
+├── script.js       # Funcionalidades JavaScript com foco em acessibilidade
 ├── .gitignore      # Arquivos ignorados pelo Git
 └── README.md       # Este arquivo
 ```
@@ -50,12 +52,10 @@ Para que os botões de download funcionem, edite o arquivo `index.html` ou `scri
 ```javascript
 // Em script.js, linha ~13
 downloadBtn.href = 'https://github.com/seu-usuario/seu-repo/releases/download/v1.0.0/app.exe';
-releaseBtn.href = 'https://github.com/seu-usuario/seu-repo/releases';
 ```
 
-Ou diretamente em `index.html`, procure pelos elementos:
+Ou diretamente em `index.html`, procure pelo elemento:
 - `id="downloadBtn"` - Link para baixar o app
-- `id="releaseBtn"` - Link para ver todas as versões
 
 ## Personalizações
 
@@ -65,34 +65,43 @@ Edite as variáveis CSS em `style.css`:
 
 ```css
 :root {
-    --primary-color: #0066cc;      /* Azul principal */
-    --secondary-color: #003d7a;    /* Azul escuro */
-    --accent-color: #ff6b35;       /* Laranja destaque */
+    --primary: #0066cc;      /* Azul principal */
+    --dark: #003d7a;         /* Azul escuro */
     /* ... outras cores */
 }
 ```
 
 ### Adicionar Screenshots
 
-Substitua a seção de screenshots em `index.html`:
+Substitua a imagem em `index.html`:
 
 ```html
-<img src="seu-screenshot.png" alt="Screenshot do Baixa NFS-e" class="screenshot">
+<img src="sua-imagem.png" alt="Descrição da imagem do Baixa NFS-e" class="preview-img">
 ```
 
-### Adicionar Links de Suporte
+### Personalizar Conteúdo
 
-Atualize os links em `index.html`:
-- Documentação
-- Reportar Bug
-- Contato
+Atualize os seguintes elementos em `index.html`:
+- Título e descrição da página
+- Texto de apresentação
+- Conteúdo SEO e FAQ
+- Links sociais e de suporte
 
 ## Responsividade
 
 A página é totalmente responsiva e se adapta a:
-- 📱 Celulares (até 480px)
-- 📱 Tablets (480px a 768px)
-- 💻 Desktop (acima de 768px)
+- 📱 Celulares (mobile-first)
+- 📱 Tablets
+- 💻 Desktop
+
+## SEO e Acessibilidade
+
+- Marcação semântica adequada (header, main, footer, section, etc.)
+- Schema.org para rich snippets
+- Meta tags Open Graph e Twitter Cards
+- Atributos WAI-ARIA para acessibilidade
+- Contraste adequado de cores
+- Tamanhos de fonte legíveis
 
 ## Navegadores Suportados
 
@@ -118,7 +127,7 @@ Sua página estará no ar em poucos minutos!
 - Mantenha os arquivos leves para melhor performance
 - Teste em diferentes dispositivos e navegadores
 - Use formatos de imagem otimizados (WebP, quando possível)
-- Acompanhe o Google Analytics para entender seu público
+- Acompanhe o Google Search Console para entender seu desempenho SEO
 
 ## Suporte
 

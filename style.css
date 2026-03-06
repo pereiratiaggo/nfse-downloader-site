@@ -19,15 +19,19 @@ body {
     background: linear-gradient(135deg, #e8f0f8 0%, #f5f5f5 100%);
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     color: #333;
+    line-height: 1.6;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .container {
     width: 100%;
-    max-width: 960px;
+    max-width: 1000px;
     padding: 20px;
+    margin: 0 auto;
 }
 
 /* ===========================
@@ -36,7 +40,8 @@ body {
 .header {
     text-align: center;
     color: var(--dark);
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    padding: 0 15px;
 }
 
 .header h1 {
@@ -52,42 +57,58 @@ body {
     font-weight: 300;
 }
 
+.header h2 {
+    font-size: 1.4rem;
+    margin-top: 10px;
+    color: #555;
+}
+
 /* ===========================
    Main Content
    =========================== */
 .main {
     background: white;
     border-radius: 12px;
-    padding: 50px 40px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    margin-bottom: 20px;
+}
+
+/* ===========================
+   Download Box Top (Centralizado)
+   =========================== */
+.download-box-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 /* ===========================
    Content Wrapper
    =========================== */
 .content-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: flex-start;
 }
 
 .left-side {
+    flex: 1;
+    min-width: 300px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 25px;
 }
 
 .right-side {
+    flex: 1;
+    min-width: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-}
-
-.download-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     gap: 20px;
 }
 
@@ -96,7 +117,7 @@ body {
    =========================== */
 .btn-download {
     display: inline-block;
-    padding: 18px 50px;
+    padding: 18px 35px;
     background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
     color: white;
     font-size: 1.2rem;
@@ -107,6 +128,8 @@ body {
     box-shadow: 0 4px 15px rgba(0, 102, 204, 0.4);
     cursor: pointer;
     border: none;
+    text-align: center;
+    min-width: 220px;
 }
 
 .btn-download:hover {
@@ -130,6 +153,7 @@ body {
     margin-top: 0;
     border-top: none;
     padding-top: 0;
+    text-align: center;
 }
 
 .preview-img {
@@ -141,6 +165,7 @@ body {
     margin: 0 auto;
     cursor: pointer;
     transition: transform 0.2s ease;
+    border: 1px solid #ddd;
 }
 
 .preview-img:hover {
@@ -151,8 +176,8 @@ body {
    Info Section
    =========================== */
 .info-section {
-    margin-top: 40px;
-    padding: 25px;
+    margin-top: 0;
+    padding: 20px;
     background: #f9f9f9;
     border-left: 4px solid var(--primary);
     border-radius: 6px;
@@ -174,7 +199,119 @@ body {
 }
 
 /* ===========================
-   Modal
+   Footer Buttons (Sobre/FAQ)
+   =========================== */
+.footer-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.footer-buttons .btn-info {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background: white;
+    color: var(--primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 2px solid var(--primary);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 102, 204, 0.2);
+    white-space: nowrap;
+}
+
+.footer-buttons .btn-info:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 102, 204, 0.35);
+}
+
+.footer-buttons .btn-info:active {
+    transform: translateY(-1px);
+}
+
+/* ===========================
+   Modal Panels
+   =========================== */
+.modal-panel {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    animation: fadeIn 0.3s ease;
+    overflow-y: auto;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-panel.show {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    border-bottom: 2px solid var(--light-gray);
+    background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+}
+
+.modal-header h3 {
+    color: var(--dark);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.modal-close {
+    background: transparent;
+    border: none;
+    font-size: 2.5rem;
+    color: var(--text-gray);
+    cursor: pointer;
+    transition: color 0.2s ease;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    color: var(--dark);
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+/* ===========================
+   Image Modal
    =========================== */
 .modal {
     display: none;
@@ -241,14 +378,27 @@ body {
     }
 }
 
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 /* ===========================
    Footer
    =========================== */
 .footer {
     text-align: center;
     color: #555;
-    margin-top: 40px;
+    margin-top: 30px;
     font-size: 0.9rem;
+    padding: 20px 15px;
+    border-top: 1px solid #eee;
 }
 
 .footer a {
@@ -266,6 +416,22 @@ body {
 /* ===========================
    Responsive
    =========================== */
+@media (max-width: 900px) {
+    .content-wrapper {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .left-side,
+    .right-side {
+        min-width: 100%;
+    }
+    
+    .main {
+        padding: 25px;
+    }
+}
+
 @media (max-width: 768px) {
     .header h1 {
         font-size: 2rem;
@@ -275,48 +441,326 @@ body {
         font-size: 1rem;
     }
 
-    .main {
-        padding: 40px 25px;
+    .header h2 {
+        font-size: 1.2rem;
     }
 
-    .content-wrapper {
-        grid-template-columns: 1fr;
-        gap: 30px;
+    .main {
+        padding: 20px;
     }
 
     .btn-download {
-        width: 100%;
-        padding: 16px 30px;
+        padding: 16px 25px;
         font-size: 1.1rem;
+        min-width: 200px;
+    }
+    
+    .download-box-top {
+        margin-bottom: 25px;
+    }
+    
+    .footer-buttons {
+        gap: 10px;
+        margin-top: 10px;
+    }
+    
+    .footer-buttons .btn-info {
+        padding: 9px 16px;
+        font-size: 0.85rem;
+    }
+    
+    .modal-content {
+        max-width: 90vw;
+        max-height: 85vh;
+    }
+    
+    .modal-header {
+        padding: 20px 25px;
+    }
+    
+    .modal-header h3 {
+        font-size: 1.3rem;
+    }
+    
+    .modal-body {
+        padding: 25px;
     }
 }
 
 @media (max-width: 480px) {
     .header h1 {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
 
     .header p {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
+    }
+
+    .header h2 {
+        font-size: 1.1rem;
     }
 
     .main {
-        padding: 30px 15px;
-    }
-
-    .content-wrapper {
-        gap: 25px;
+        padding: 15px;
     }
 
     .btn-download {
         width: 100%;
-        padding: 14px 20px;
+        padding: 16px;
+        font-size: 1.1rem;
+        min-width: auto;
+    }
+    
+    .info-section,
+    .seo-content {
+        padding: 15px;
+    }
+    
+    .seo-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    .seo-content h4 {
         font-size: 1rem;
     }
-
-    .info-section {
+    
+    .download-box-top {
+        margin-bottom: 20px;
+    }
+    
+    .footer-buttons {
+        gap: 8px;
+        margin-top: 12px;
+        justify-content: flex-end;
+    }
+    
+    .footer-buttons .btn-info {
+        padding: 9px 14px;
+        font-size: 0.8rem;
+        min-width: auto;
+    }
+    
+    .footer {
+        padding: 15px;
+    }
+    
+    .modal-panel {
+        padding: 15px;
+    }
+    
+    .modal-content {
+        max-width: 100%;
+        max-height: 90vh;
+    }
+    
+    .modal-header {
+        padding: 18px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .modal-header h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+    
+    .modal-close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+    }
+    
+    .modal-body {
         padding: 20px;
+    }
+    
+    .faq-section {
+        padding: 0;
+    }
+    
+    .faq-section h3 {
+        font-size: 1.2rem;
+    }
+    
+    .faq-item {
+        padding: 15px;
+        margin-bottom: 10px;
+    }
+    
+    .faq-item h4 {
+        font-size: 0.95rem;
+    }
+    
+    .faq-item p {
         font-size: 0.9rem;
     }
+}
+
+/* ===========================
+SEO Content Section
+=========================== */
+.seo-content {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-left: none;
+}
+
+.seo-content h3 {
+    color: var(--dark);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+.seo-content > p:first-of-type {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.seo-content h4 {
+    color: var(--primary);
+    margin: 25px 0 15px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.seo-content h4::before {
+    content: '✓';
+    margin-right: 10px;
+    font-size: 1.4rem;
+    color: var(--primary);
+}
+
+.seo-content ul {
+    margin: 15px 0 20px 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.seo-content li {
+    margin-bottom: 12px;
+    padding-left: 28px;
+    line-height: 1.6;
+    position: relative;
+    color: #555;
+}
+
+.seo-content li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.seo-content > p:last-of-type {
+    margin-top: 20px;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #666;
+    padding-top: 0;
+    border-top: none;
+}
+
+.footer-description {
+    margin-top: 10px;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+/* ===========================
+FAQ Section
+=========================== */
+.faq-section {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    border-top: none;
+}
+
+.faq-section h3 {
+    color: var(--dark);
+    margin-bottom: 30px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    display: flex;
+    align-items: center;
+}
+
+.faq-section h3::before {
+    content: '❓';
+    margin-right: 12px;
+    font-size: 1.8rem;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+    padding: 18px 20px;
+    background: white;
+    border-radius: 8px;
+    border-left: 3px solid var(--primary);
+    box-shadow: 0 2px 8px rgba(0, 102, 204, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid #e0e8f7;
+    border-left: 3px solid var(--primary);
+}
+
+.faq-item:hover {
+    box-shadow: 0 4px 15px rgba(0, 102, 204, 0.15);
+    transform: translateY(-2px);
+}
+
+.faq-item:last-child {
+    margin-bottom: 0;
+}
+
+.faq-item h4 {
+    color: var(--dark);
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.faq-item h4::before {
+    content: '▶';
+    margin-right: 8px;
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active h4::before {
+    transform: rotate(90deg);
+}
+
+.faq-item p {
+    margin: 0;
+    line-height: 1.6;
+    color: #555;
+    font-size: 0.95rem;
+    max-height: 500px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item p[itemprop="acceptedAnswer"] {
+    display: none;
+}
+
+.faq-item.active p[itemprop="acceptedAnswer"] {
+    display: block;
 }
 
