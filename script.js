@@ -1,5 +1,46 @@
+// Função para carregar e atualizar a versão automaticamente
+async function carregarVersao() {
+    try {
+        const response = await fetch('version.json');
+        const data = await response.json();
+        const versao = data.version;
+        
+        // Atualizar o texto da versão abaixo do botão
+        const versionElement = document.querySelector('.version');
+        if (versionElement) {
+            versionElement.textContent = `Versão ${versao}`;
+        }
+        
+        // Atualizar o aria-label do botão de download
+        const downloadBtn = document.getElementById('downloadBtn');
+        if (downloadBtn) {
+            downloadBtn.setAttribute('aria-label', `Baixar aplicativo Baixa NFS-e versão ${versao}`);
+        }
+        
+        // Atualizar o JSON-LD do Schema.org
+        const schemaScript = document.querySelector('script[type="application/ld+json"]');
+        if (schemaScript) {
+            const schemaData = JSON.parse(schemaScript.textContent);
+            schemaData.softwareVersion = versao;
+            schemaData.dateModified = new Date().toISOString().split('T')[0];
+            if (schemaData.hasPart && schemaData.hasPart[0]) {
+                schemaData.hasPart[0].version = versao;
+            }
+            schemaScript.textContent = JSON.stringify(schemaData, null, 4);
+        }
+        
+        return versao;
+    } catch (error) {
+        console.error('Erro ao carregar versão:', error);
+        return null;
+    }
+}
+
 // Função para inicializar os eventos após o carregamento do DOM
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
+    // Carregar e atualizar a versão automaticamente
+    await carregarVersao();
+    
     // ===== Download e Modal de Imagem =====
     const downloadBtn = document.getElementById('downloadBtn');
     const previewImg = document.getElementById('previewImg');
@@ -38,9 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
             imageModal.setAttribute('aria-hidden', 'true');
         }
     });
-    
-    // Melhorar acessibilidade para o botão de download
-    downloadBtn.setAttribute('aria-label', 'Baixar aplicativo Baixa NFS-e versão 1.6.3');
     
     // ===== Modais de Sobre e FAQ =====
     const btnSobre = document.getElementById('btnSobre');
