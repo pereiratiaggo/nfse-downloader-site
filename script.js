@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     const closeModal = document.getElementById('closeModal');
 
     // Atualizar link de download
-    downloadBtn.href = 'https://drive.google.com/file/d/1bD-lpoIc9d-nxrHtwcyvl7ZNn1KmrUZF/view?usp=sharing';
+    downloadBtn.href = 'https://raw.githubusercontent.com/pereiratiaggo/nfse-downloader-site/refs/heads/main/releases/Baixanfse.v3.2026.001.zip';
     downloadBtn.target = '_blank';
     downloadBtn.rel = 'noopener noreferrer';
 
